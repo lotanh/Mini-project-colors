@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#side-bar {
+    width: 20%;
+    height: 100vh;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    background-color: gray;
+    grid-column: 1 / 4;
+    padding: 0px 5px;
+    padding-bottom: 5px;
+}
+#btn {
+    background-color: lightgreen;
+    grid-column: 1 / span 3;  
+}
+#main {
+    width: 60%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(60 , 1fr);
+    /* padding: 5px 0px 5px 0; */
+}
+#big {
+    display: flex;
+}
+
+@media screen and (max-width: 770px) {
+    #side-bar {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+    }  
+}
+
+
