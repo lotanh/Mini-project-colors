@@ -1,74 +1,80 @@
-let sideDiv = document.getElementById('side-bar')
-let mainDiv = document.getElementById('main')
-let colors = ['red' , 'orange' , 'yellow' , 'green', 'white', 'gray', 'blue', 'lightpink', 'lightgray', 'cyan' , 'lightgreen', 'yellowgreen', 'black', 'indigo', 'darkblue']
-let btn = document.getElementById('btn')
-let currentColor
-let isDrawing = false;
+const quotes = [
+    {
+        id:0,
+        author: " Nelson Mandela",
+        quote: "The greatest glory in living lies not in never falling, but in rising every time we fall."
+    },
+    {
+        id : 1,
+        author : " Walt Disney",
+        quote : "The way to get started is to quit talking and begin doing."
+    },
+    {
+        id : 2,
+        author : " Steve Jobs",
+        quote : "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking."
+    },
+    {
+        id : 3,
+        author : " Eleanor Roosevelt",
+        quote : "If life were predictable it would cease to be life, and be without flavor."
+    },
+    {
+        id : 4,
+        author : " Franklin D. Roosevelt",
+        quote : "When you reach the end of your rope, tie a knot in it and hang on."
+    },
+    {
+        id : 5,
+        author : " Margaret Mead",
+        quote : "Always remember that you are absolutely unique. Just like everyone else."
+    },
+    {
+        id : 6,
+        author : " Aristotle",
+        quote : "It is during our darkest moments that we must focus to see the light."
+    },
+    {
+        id : 7,
+        author : " Ralph Waldo Emerson",
+        quote : "Do not go where the path may lead, go instead where there is no path and leave a trail."
+    },
+]
 
+var current = 0
+var previous = 0
+const btn = document.getElementById('btn')
+const words = document.querySelector('#words')
+const nameAuthor = document.querySelector('#name')
 
-for (let i = 0; i < colors.length; i++) {
-    let divColor = document.createElement('div');
-    let nameColor = colors[i];
-    divColor.classList.add(nameColor);
-    sideDiv.appendChild(divColor);
-    divColor.style.backgroundColor = nameColor;
-    divColor.style.padding = "1vh" ;
-    divColor.style.border = "1px solid black";
-    divColor.addEventListener('click', function(){
-        currentColor = nameColor
-        console.log(currentColor)
-        return currentColor
-    })    
-}
-
-
-for (let i = 0; i < 1000; i++) {
-    let divWhite = document.createElement('div');
-    divWhite.classList.add('white');
-    divWhite.style.backgroundColor = 'white';
-    divWhite.style.width = "50px";
-    divWhite.style.padding = "1vh"; 
-    divWhite.style.border = "1px solid lightgrey"; 
-    mainDiv.appendChild(divWhite);
-
-    divWhite.addEventListener('mousedown', function() {
-        isDrawing = true;
-    }); 
-    divWhite.addEventListener('mousemove', function() {
-    if (isDrawing === true) {
-        divWhite.style.backgroundColor = currentColor
-    }
-    });
-    window.addEventListener('mouseup', function() {
-        if (isDrawing === true) {
-            divWhite.style.backgroundColor = " "
-          isDrawing = false;
+btn.addEventListener('click' , () => {
+    if (current < quotes.length) {
+        previous = current
+        current = Math.floor(Math.random() * 10)
+        console.log(current)
+        console.log(previous)
+        if (current === previous) {
+            current = 0 
+        }else {
+            words.innerHTML = `"${quotes[current].quote}"`
+            nameAuthor.innerHTML = `${quotes[current].author}`
+            console.log(quotes[current].quote + quotes[current].author)
         }
-      });
-    
-}
-btn.addEventListener('click' , function() {
-    let array = mainDiv.children
-    console.log(array)
-    for (let i = 0; i < array.length; i++) {
-        array[i].style.backgroundColor = "white";  
+    }else {
+        current = 0
     }
 })
 
+const formBtn = document.querySelector('#btn-form')
+var quoteBox = document.getElementById('quote-box')
+var authorBox = document.getElementById('author-box')
+var newQuote = {}
+var i = 8
 
-    // divWhite.addEventListener('mousedown' , function() {
-    //     divWhite.style.backgroundColor = currentColor
-    // }   if (mousedown === false) {
-    //     divWhite.style.backgroundColor = " " 
-    // }
-// })
-    // divWhite.addEventListener('mouseup' , function() {
-    //     if (mousedown === false) {
-    //         divWhite.style.backgroundColor = " " 
-    //     }
-    // })
-    // divWhite.addEventListener('mouseover' , function() {
-    //     if (mousedown === true) {
-    //         divWhite.style.backgroundColor = currentColor 
-    //     }
-    // })
+formBtn.addEventListener('click', (event) => {
+    newQuote = {id:i, author: authorBox.value, quote: quoteBox.value}
+    quotes.push(newQuote)
+    console.log(quotes)
+    i++
+    event.preventDefault()
+})
