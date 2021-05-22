@@ -1,80 +1,114 @@
-const quotes = [
+const robots = [
     {
-        id:0,
-        author: " Nelson Mandela",
-        quote: "The greatest glory in living lies not in never falling, but in rising every time we fall."
+      id: 1,
+      name: 'Leanne Graham',
+      username: 'Bret',
+      email: 'Sincere@april.biz',
+      image: 'https://robohash.org/1?200x200'
     },
     {
-        id : 1,
-        author : " Walt Disney",
-        quote : "The way to get started is to quit talking and begin doing."
+      id: 2,
+      name: 'Ervin Howell',
+      username: 'Antonette',
+      email: 'Shanna@melissa.tv',
+      image: 'https://robohash.org/2?200x200'
     },
     {
-        id : 2,
-        author : " Steve Jobs",
-        quote : "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking."
+      id: 3,
+      name: 'Clementine Bauch',
+      username: 'Samantha',
+      email: 'Nathan@yesenia.net',
+      image: 'https://robohash.org/3?200x200'
     },
     {
-        id : 3,
-        author : " Eleanor Roosevelt",
-        quote : "If life were predictable it would cease to be life, and be without flavor."
+      id: 4,
+      name: 'Patricia Lebsack',
+      username: 'Karianne',
+      email: 'Julianne.OConner@kory.org',
+      image: 'https://robohash.org/4?200x200'
     },
     {
-        id : 4,
-        author : " Franklin D. Roosevelt",
-        quote : "When you reach the end of your rope, tie a knot in it and hang on."
+      id: 5,
+      name: 'Chelsey Dietrich',
+      username: 'Kamren',
+      email: 'Lucio_Hettinger@annie.ca',
+      image: 'https://robohash.org/5?200x200'
     },
     {
-        id : 5,
-        author : " Margaret Mead",
-        quote : "Always remember that you are absolutely unique. Just like everyone else."
+      id: 6,
+      name: 'Mrs. Dennis Schulist',
+      username: 'Leopoldo_Corkery',
+      email: 'Karley_Dach@jasper.info',
+      image: 'https://robohash.org/6?200x200'
     },
     {
-        id : 6,
-        author : " Aristotle",
-        quote : "It is during our darkest moments that we must focus to see the light."
+      id: 7,
+      name: 'Kurtis Weissnat',
+      username: 'Elwyn.Skiles',
+      email: 'Telly.Hoeger@billy.biz',
+      image: 'https://robohash.org/7?200x200'
     },
     {
-        id : 7,
-        author : " Ralph Waldo Emerson",
-        quote : "Do not go where the path may lead, go instead where there is no path and leave a trail."
+      id: 8,
+      name: 'Nicholas Runolfsdottir V',
+      username: 'Maxime_Nienow',
+      email: 'Sherwood@rosamond.me',
+      image: 'https://robohash.org/8?200x200'
     },
-]
-
-var current = 0
-var previous = 0
-const btn = document.getElementById('btn')
-const words = document.querySelector('#words')
-const nameAuthor = document.querySelector('#name')
-
-btn.addEventListener('click' , () => {
-    if (current < quotes.length) {
-        previous = current
-        current = Math.floor(Math.random() * 10)
-        console.log(current)
-        console.log(previous)
-        if (current === previous) {
-            current = 0 
-        }else {
-            words.innerHTML = `"${quotes[current].quote}"`
-            nameAuthor.innerHTML = `${quotes[current].author}`
-            console.log(quotes[current].quote + quotes[current].author)
-        }
-    }else {
-        current = 0
+    {
+      id: 9,
+      name: 'Glenna Reichert',
+      username: 'Delphine',
+      email: 'Chaim_McDermott@dana.io',
+      image:'https://robohash.org/9?200x200'
+    },
+    {
+      id: 10,
+      name: 'Clementina DuBuque',
+      username: 'Moriah.Stanton',
+      email: 'Rey.Padberg@karina.biz',
+      image:'https://robohash.org/10?200x200'
     }
-})
+];
 
-const formBtn = document.querySelector('#btn-form')
-var quoteBox = document.getElementById('quote-box')
-var authorBox = document.getElementById('author-box')
-var newQuote = {}
-var i = 8
+const realTime = () => {
+  const inputBar = document.getElementById('search')
+  const typing = inputBar.value
+  console.log(typing)
+  let arrRobot = robots.filter(robot => {
+    let name = robot.name.toLocaleLowerCase()
+    let userName = robot.username.toLocaleLowerCase()
+    let result = typing.toLowerCase()
+    return (name.startsWith(result) || userName.startsWith(result) || result == robot.id)
+  })
+  createElements(arrRobot)
+}
 
-formBtn.addEventListener('click', (event) => {
-    newQuote = {id:i, author: authorBox.value, quote: quoteBox.value}
-    quotes.push(newQuote)
-    console.log(quotes)
-    i++
-    event.preventDefault()
-})
+const createElements = (arr) => {
+  const robotContainer = document.getElementById('robot-box')
+  robotContainer.innerHTML = '';
+  arr.forEach(item => {
+    var div = document.createElement('div');
+    var divImg = document.createElement('div');
+    div.classList.add('robot-cont');
+    divImg.classList.add('img-div')
+    var robotImg = document.createElement('img');
+    var robotName = document.createElement('h4');
+    var robotEmail = document.createElement('p');
+    robotImg.src = item.image
+    robotImg.classList.add('img-robot');
+    divImg.appendChild(robotImg);
+    robotName.innerText = item.name;
+    robotEmail.innerText = item.email;
+    divImg.appendChild(robotImg);
+    div.appendChild(divImg);
+    div.appendChild(robotName);
+    div.appendChild(robotEmail);
+    robotContainer.appendChild(div)
+  })
+}
+createElements(robots)
+
+
+
+

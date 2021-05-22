@@ -4,27 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.cdnfonts.com/css/sega-logo-font" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <div id="big">
-        <section id="box">
-            <button id="btn" type="submit">Generate Quote</button>
-            <div id="text">
-                <p1 id="words"></p1>
-                <h4 id="name"></h4>
+    <div id="container">
+        <div id="header">
+            <p id="logo">RoboFriends</p>
+            <div id="search-box">
+                <input type="text" id="search" value="" onkeyup="realTime()"> 
             </div>
-            <form id="form-box">
-                <label for="fname">Quote:</label>
-                <input type="text" id="quote-box" name="quote">
-                <label for="lname">Author:</label>
-                <input type="text" id="author-box" name="author">
-                <input type="submit" value="Submit" id="btn-form">
-              </form>
-        </section>
+        </div>
+        <div id="robot-box">
+            
+        </div>
     </div>
-
 
     <script src="script.js"></script>
 </body>

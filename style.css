@@ -1,42 +1,115 @@
 body {
-    background-color: black;
+    background-color: lightsteelblue;
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url(img/background1.png);
 }
-#big {
+* {
+    margin: 0;
+    padding: 0;
+}
+#header {
     width: 100%;
-    height: 900px;
+    height: 70px;
+    position: relative;
+    top: 0;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: lightgreen;
+    /* position: absolute; */
+    /* top: 0; */
+    
+}
+#search {
+    width: 80%;
+    font-size: 30px;
+
+    padding: 10px -13px;
+}
+#search-box {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
-#box {
-    background-color: whitesmoke;
-    width: 650px;
-    height: 800px;
-    border: 2px solid black;
+
+#container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+#robot-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 100px;
+    justify-content: center;
+    row-gap: 30px;
+    align-content: center;
+}
+#logo {
+    font-family: 'SEGA LOGO FONT', sans-serif;
+    padding: 25px;
+    font-size: 27px;
+    color: darkslategray;
+}
+
+.robot-cont {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 30px;
-}
-#btn {
+    background-color: antiquewhite;
+    height: 355px;
     width: 300px;
-    height: 100px;
+    border-radius: 35px;
+    justify-content: space-around;
 }
-#text {
-    padding: 0px 25px;
+.img-div {
+    width: 209px;
+    height: 195px;
+    border-radius: 100px;
+    background-color: darkblue;
+    display: flex;
+    justify-content: center;
 }
-#words {
-    font-size: 50px;
-    font-family: 'Courier New', Courier, monospace;
+.img-robot {
+    width: 167px;
+    height: 159px;
 }
-#name {
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace; 
-}
-#form-box {
-    width: auto;
-}
-.btn-form {
-    font-size: 10px;
+
+
+@media screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) { 
+    #header{
+        width: 100%;
+    }
+    #logo {
+        font-size: 17px;
+    }
+    .robot-cont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: antiquewhite;
+        height: 203px;
+        width: 200px;
+        border-radius: 35px;
+        justify-content: space-around;
+    }
+    .img-robot {
+        width: 70px;
+        height: 70px;
+    }
+    .img-div {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        background-color: darkblue;
+        display: flex;
+        justify-content: center;
+    }
 }
